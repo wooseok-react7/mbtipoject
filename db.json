@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": "아오진짜",
+      "password": "1234",
+      "nickname": "아오"
+    },
+    {
+      "id": "화난다정말",
+      "password": "1234",
+      "nickname": "anjsep"
+    },
+    {
+      "id": "아오아오아오",
+      "password": "123",
+      "nickname": "아니"
+    }
+  ]
+}
