@@ -20,7 +20,7 @@ const HomePage = () => {
     const token = localStorage.getItem("authToken");
 
     if (token) {
-      navigate("/mbti");
+      navigate("/testPage");
     } else {
       alert("로그인이 필요한 페이지 입니다.");
       navigate("/login");

@@ -3,8 +3,8 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
-import MbtiTestPage from "./pages/MbtiTestPage";
 import MyPage from "./pages/MyPage";
+import TestPage from "./pages/TestPage";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/m" element={<Header />} />
           <Route path="/" element={<HomePage />} />
-          <Route path="/mbti" element={<MbtiTestPage />} />
+          <Route path="/testPage" element={<TestPage />} />
           <Route path="mypage" element={<MyPage />} />
         </Routes>
       </BrowserRouter>
