@@ -32,12 +32,12 @@ const HomePage = () => {
   };
   return (
     <>
-      <button onClick={handleMyPage}>MBTI 검사하기🫵</button>
+      {/* <button onClick={handleMyPage}>MBTI 검사하기🫵</button>
       {isLoggedIn ? (
         <button onClick={handleLogout}>로그아웃</button>
       ) : (
         <button onClick={handleLogin}>로그인</button>
-      )}
+      )} */}
     </>
   );
 };
