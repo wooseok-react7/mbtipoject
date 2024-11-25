@@ -28,9 +28,9 @@ const Login = () => {
     <>
       <form>
         <label>로그인</label>
-        <input type="text"></input>
+        <input type="text" value={} onChange={}></input>
         <label>패스워드</label>
-        <input type="password"></input>
+        <input type="password" value={} onChange={}></input>
         <button onClick={handleLogin}>로그인</button>
         <button onClick={handleSignup}>회원가입</button>
       </form>
