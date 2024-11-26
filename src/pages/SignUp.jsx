@@ -35,6 +35,7 @@ const SignUp = () => {
     try {
       const userData = { id: userId, password, nickname: userNickname };
       const result = await register(userData);
+      console.log(result);
 
       if (!result.success) {
         // 서버 응답에 따른 에러 메시지 처리

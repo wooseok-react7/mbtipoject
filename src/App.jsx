@@ -7,25 +7,30 @@ import TestPage from "./pages/TestPage";
 import HeaderLayout from "./components/HeaderLayout";
 import SideLayout from "./components/SideLayout";
 import ResultsPage from "./pages/ResultsPage";
+import { AuthProvider, ProtectedRoute } from "./components/AuthProvider";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
+        <AuthProvider>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
 
-          <Route element={<HeaderLayout />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="mypage" element={<MyPage />} />
-            <Route path="results" element={<ResultsPage />} />
-          </Route>
+            <Route element={<HeaderLayout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="mypage" element={<MyPage />} />
+                <Route path="results" element={<ResultsPage />} />
+              </Route>
+            </Route>
 
-          <Route element={<SideLayout />}>
-            <Route path="/testPage" element={<TestPage />} />
-          </Route>
-        </Routes>
+            <Route element={<SideLayout />}>
+              <Route path="/testPage" element={<TestPage />} />
+            </Route>
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </>
   );

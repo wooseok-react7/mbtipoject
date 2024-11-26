@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { AuthContext } from "./AuthProvider";
 
 const Heabar = styled.header`
   background-color: gray;
@@ -11,6 +12,8 @@ const HeaderLayout = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const { isAuthenticated, logout } = useContext(AuthContext);
+
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     setIsLoggedIn(!!token);
@@ -19,7 +22,7 @@ const HeaderLayout = () => {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     setIsLoggedIn(false);
-    alert("로그아웃이 되었습니다.");
+    // alert("로그아웃이 되었습니다.");
   };
 
   const handleMyPage = () => {
@@ -36,14 +39,14 @@ const HeaderLayout = () => {
   const handleLogin = () => {
     navigate("/login");
   };
-
+  console.log(isAuthenticated);
   return (
     <>
       <Heabar>
         <div>
           <button onClick={handleMyPage}>MBTI 검사하기🫵</button>
-          {isLoggedIn ? (
-            <button onClick={handleLogout}>로그아웃</button>
+          {isAuthenticated ? (
+            <button onClick={logout}>로그아웃</button>
           ) : (
             <button onClick={handleLogin}>로그인 </button>
           )}

@@ -1,6 +1,8 @@
-import React from "react";
+// import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link, Navigate, Outlet } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
+import { AuthContext } from "./AuthProvider";
 
 const Sidebar = styled.div`
   background-color: white;
@@ -66,15 +68,22 @@ const TopScrollButton = styled.button`
 `;
 
 const SideLayout = () => {
-  const isLoggedIn = !!localStorage.getItem("authToken");
-  if (!isLoggedIn) {
-    return <Navigate to="/login" replace />;
-  }
+  const { isAuthenticated, logout } = useContext(AuthContext);
+  // const { logout } = useContext(AuthContext);
+
+  // const isLoggedIn = !!localStorage.getItem("authToken");
+  // if (!isLoggedIn) {
+  //   return <Navigate to="/login" replace />;
+  // }
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+  };
+
+  const handleLogin = () => {
+    navigate("/login");
   };
 
   return (
@@ -83,7 +92,12 @@ const SideLayout = () => {
         <li>
           <p>로고</p>
         </li>
-        <button>로그아웃</button>
+
+        {isAuthenticated ? (
+          <button onClick={logout}>로그아웃</button>
+        ) : (
+          <button onClick={handleLogin}>로그인 </button>
+        )}
 
         <li>
           <Link to="/">메인 화면</Link>

@@ -1,29 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../api/auth";
+import axios from "axios";
+import { AuthContext } from "../components/AuthProvider";
 
 const Login = () => {
   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
+  const { login: loginContext } = useContext(AuthContext);
 
   const handleLogin = async () => {
     const userData = {
       id: userId,
       password,
     };
-
     try {
       const response = await login(userData);
-
+      console.log(response);
       if (response.success) {
         alert("로그인 성공!");
-        console.log("받은 토큰:", response.token);
+        // console.log("받은 토큰:", response.token);
         // 토큰 저장 (예: localStorage)
-        localStorage.setItem("authToken", response.token);
-
+        loginContext();
         // 홈 이동
-        navigate("/");
       } else {
         alert(response.message || "로그인에 실패했습니다.");
       }
@@ -60,3 +60,25 @@ const Login = () => {
 };
 
 export default Login;
+
+//   const userData = {
+//     id: userId,
+//     password,
+//   };
+//   try {
+//     const response = await login(userData);
+//     console.log(response);
+//     if (response.success) {
+//       alert("로그인 성공!");
+//       console.log("받은 토큰:", response.token);
+//       // 토큰 저장 (예: localStorage)
+//       localStorage.setItem("authToken", response.token);
+//       // 홈 이동
+//       navigate("/");
+//     } else {
+//       alert(response.message || "로그인에 실패했습니다.");
+//     }
+//   } catch (error) {
+//     console.error("로그인 중 오류:", error.message);
+//     alert(error.message);
+//   }
