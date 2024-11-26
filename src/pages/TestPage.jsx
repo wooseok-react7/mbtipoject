@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Side from "../components/Side";
+// import Side from "../components/Side";
 import React, { useState } from "react";
 import TestForm from "../components/TestForm";
 import { calculateMBTI, mbtiDescriptions } from "../utils/mbtiCalculator";
@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: auto;
-  background-color: lightgray; /* 배경색으로 영역 확인 */
+  background-color: rgb(246, 249, 250);
 `;
 
 const Bodybar = styled.div`
@@ -37,24 +37,19 @@ const Bodybar = styled.div`
 const TestPage = () => {
   const navigate = useNavigate();
   const [result, setResult] = useState(null);
-
   const handleTestSubmit = async (answers) => {
-    const mbtiResult = calculateMBTI(answers);
-    console.log("MBTI Result:", answers);
-    try {
-      const payload = {
-        userId: user?.id || "anonymous",
-        mbtiResult,
-        timestamp: new Date().toISOString(),
-      };
-
-      const savedResult = await createTestResult(payload);
-      setResult(mbtiResult);
-      console.log("Test result saved successfully:", savedResult);
-    } catch (error) {
-      console.error("Error saving test result:", error.message);
-      alert("테스트 결과 저장 중 문제가 발생했습니다. 다시 시도해주세요.");
-    }
+    const mbtiResult = calculateMBTI(answers); // MBTI 결과 계산
+    // 인증 토큰 가져오기 (예: 로컬 스토리지에서 가져오기)
+    const token = localStorage.getItem("authToken");
+    // 결과를 서버에 저장
+    const payload = {
+      userId: token.id, // 실제 user id 값을 받아와야 된다. token.id
+      mbtiResult,
+      timestamp: new Date().toISOString(),
+    };
+    const savedResult = await createTestResult(payload);
+    setResult(savedResult.mbtiResult);
+    console.log("Test result saved:", savedResult);
   };
 
   const handleNavigateToResults = () => {
@@ -92,13 +87,7 @@ const TestPage = () => {
             )}
           </div>
         </Bodybar>
-        {/* </Bodybar> */}
       </Wrapper>
-      {/* <Sidebar> */}
-      {/* <TopScrollButton> */}
-      <Side buttonText="Back to Top" />
-      {/* </TopScrollButton> */}
-      {/* </Sidebar> */}
     </>
   );
 };
