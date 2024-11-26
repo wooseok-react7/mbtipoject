@@ -10,22 +10,19 @@ const Heabar = styled.header`
 
 const HeaderLayout = () => {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const handleMypage = () => {
+    navigate("/mypage");
+  };
 
   const { isAuthenticated, logout } = useContext(AuthContext);
 
-  useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    setIsLoggedIn(!!token);
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("authToken");
+  //   setIsLoggedIn(!!token);
+  // }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    setIsLoggedIn(false);
-    // alert("로그아웃이 되었습니다.");
-  };
-
-  const handleMyPage = () => {
+  const handleTestPage = () => {
     const token = localStorage.getItem("authToken");
 
     if (token) {
@@ -40,17 +37,21 @@ const HeaderLayout = () => {
     navigate("/login");
   };
   console.log(isAuthenticated);
+
   return (
     <>
       <Heabar>
         <div>
-          <button onClick={handleMyPage}>MBTI 검사하기🫵</button>
+          <button onClick={handleTestPage}>MBTI 검사하기🫵</button>
           {isAuthenticated ? (
             <button onClick={logout}>로그아웃</button>
           ) : (
             <button onClick={handleLogin}>로그인 </button>
           )}
-          <Link to="/mypage">내 정보</Link>
+          <li>
+            <Link to="/mypage">내 정보</Link>
+          </li>
+          <Link onClick={handleMypage}>진짜 내 정보 </Link>
         </div>
       </Heabar>
 

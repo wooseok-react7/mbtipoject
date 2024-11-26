@@ -29,11 +29,12 @@ export const register = async (userData) => {
 };
 
 export const login = async (userData) => {
+  // const { setUser } = useContext(AuthContext);
   try {
-    // POST 요청을 통해 로그인 API 호출
     const { data } = await axios.post(`${API_URL}/login`, userData);
-
-    // 서버 응답 반환 (성공/실패 여부 포함)
+    console.log(data);
+    localStorage.setItem("accessToken", data.accessToken);
+    // setUser({ nickname: data.nickname, userId: data.userId });
     return data;
   } catch (error) {
     if (error.response) {
@@ -47,13 +48,20 @@ export const login = async (userData) => {
   }
 };
 
-export const getUserProfile = async (token) => {
-  const response = await axios.get(`${API_URL}/getUserProfile`, {
-    headers: {
-      Authorization: "Bearer AccessToken",
-    },
-  });
-};
+// export const getUserProfile = async (token) => {
+// const response = await axios.get(`${API_URL}/getUserProfile`, {
+// }
+// return response.data
+// };
 // 유저의 정보를 이걸로 받아옴
 
-export const updateProfile = async (formData) => {};
+export const updateProfile = async (formData, token) => {
+  console.log(formData, token);
+  const response = await axios.patch(`${API_URL}/profile`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+};

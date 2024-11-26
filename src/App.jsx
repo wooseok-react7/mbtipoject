@@ -8,6 +8,7 @@ import HeaderLayout from "./components/HeaderLayout";
 import SideLayout from "./components/SideLayout";
 import ResultsPage from "./pages/ResultsPage";
 import { AuthProvider, ProtectedRoute } from "./components/AuthProvider";
+import { useState } from "react";
 
 function App() {
   return (
@@ -21,13 +22,13 @@ function App() {
             <Route element={<HeaderLayout />}>
               <Route path="/" element={<HomePage />} />
               <Route element={<ProtectedRoute />}>
-                <Route path="mypage" element={<MyPage />} />
                 <Route path="results" element={<ResultsPage />} />
+                <Route path="mypage" element={<MyPage />} />
               </Route>
-            </Route>
 
-            <Route element={<SideLayout />}>
-              <Route path="/testPage" element={<TestPage />} />
+              <Route element={<SideLayout />}>
+                <Route path="/testPage" element={<TestPage />} />
+              </Route>
             </Route>
           </Routes>
         </AuthProvider>

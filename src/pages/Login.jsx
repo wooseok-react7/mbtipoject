@@ -9,17 +9,21 @@ const Login = () => {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const { login: loginContext } = useContext(AuthContext);
+  const { setUser } = useContext(AuthContext);
 
   const handleLogin = async () => {
     const userData = {
       id: userId,
       password,
     };
+
     try {
       const response = await login(userData);
-      console.log(response);
+      console.log("res", response);
+      setUser({ nickname: response.nickname, userId: response.userId });
       if (response.success) {
         alert("로그인 성공!");
+        // setUser()
         // console.log("받은 토큰:", response.token);
         // 토큰 저장 (예: localStorage)
         loginContext();

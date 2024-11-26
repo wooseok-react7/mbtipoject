@@ -8,8 +8,9 @@ import HomeImg4 from "../assets/image/HomeImg4.png";
 
 const Bodybar = styled.div`
   height: 500px;
-  width: 1055px;
-  margin-left: 420px;
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
   margin-top: 100px;
   background-color: green;
   & img {

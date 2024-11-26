@@ -1,24 +1,21 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 const token = localStorage.getItem("authToken");
 
-export const ProtectedRoute = ({ token }) => {
-  if (!token) {
-    return <Navigate to="/login" />;
-  }
-  return <Outlet />;
-};
-
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(!!token);
 
+  const [user, setUser] = useState(null);
+
+  console.log("user", user);
   const login = (token) => {
     localStorage.setItem("authToken", token);
     setIsAuthenticated(true);
+    // setUser(userInfo); // 사용자 정보 설정
     navigate("/");
   };
 
@@ -30,9 +27,20 @@ export const AuthProvider = ({ children }) => {
     navigate("/");
   };
 
+  console.log(user);
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, login, logout, user, setUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
+};
+
+export const ProtectedRoute = () => {
+  const { isAuthenticated } = useContext(AuthContext);
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+  return <Outlet />;
 };

@@ -43,11 +43,13 @@ const TestPage = () => {
     // 인증 토큰 가져오기 (예: 로컬 스토리지에서 가져오기)
     const token = localStorage.getItem("authToken");
     // 결과를 서버에 저장
+
     const payload = {
-      userId: token.id, // 실제 user id 값을 받아와야 된다. token.id
+      userId: token.id, // 실제 user id 값을 받아와야 된다. 그게 뭔데...
       mbtiResult,
       timestamp: new Date().toISOString(),
     };
+
     const savedResult = await createTestResult(payload);
     setResult(savedResult.mbtiResult);
     console.log("Test result saved:", savedResult);
