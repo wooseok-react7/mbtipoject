@@ -1,123 +1,29 @@
 {
   "testResults": [
     {
-      "userId": "anonymous",
       "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T02:59:53.888Z",
+      "timestamp": "2024-11-26T06:57:32.033Z",
       "id": 1
     },
     {
-      "userId": "anonymous",
       "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T03:11:06.488Z",
+      "timestamp": "2024-11-26T06:57:37.248Z",
       "id": 2
     },
     {
-      "userId": "anonymous",
       "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T03:58:39.475Z",
+      "timestamp": "2024-11-26T06:57:43.284Z",
       "id": 3
     },
     {
-      "userId": "anonymous",
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T04:00:34.496Z",
+      "mbtiResult": "ESFJ",
+      "timestamp": "2024-11-26T06:57:53.364Z",
       "id": 4
     },
     {
-      "userId": "anonymous",
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T04:02:45.050Z",
+      "mbtiResult": "INTP",
+      "timestamp": "2024-11-26T06:58:08.726Z",
       "id": 5
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T04:08:05.687Z",
-      "id": 6
-    },
-    {
-      "userId": "anonymous",
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T04:10:09.596Z",
-      "id": 7
-    },
-    {
-      "userId": "anonymous",
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T04:10:14.635Z",
-      "id": 8
-    },
-    {
-      "userId": "anonymous",
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T04:25:06.337Z",
-      "id": 9
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T04:25:31.340Z",
-      "id": 10
-    },
-    {
-      "userId": "undefined",
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T04:26:43.109Z",
-      "id": 11
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T04:28:18.967Z",
-      "id": 12
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T04:30:31.808Z",
-      "id": 13
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T04:47:53.856Z",
-      "id": 14
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T04:47:54.740Z",
-      "id": 15
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T05:02:50.837Z",
-      "id": 16
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T05:05:37.421Z",
-      "id": 17
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T05:05:47.779Z",
-      "id": 18
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T05:21:03.884Z",
-      "id": 19
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T05:23:36.338Z",
-      "id": 20
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T05:26:32.717Z",
-      "id": 21
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T05:28:37.376Z",
-      "id": 22
     }
   ]
 }

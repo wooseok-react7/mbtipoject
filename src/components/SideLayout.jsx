@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 const Sidebar = styled.div`
@@ -66,6 +66,10 @@ const TopScrollButton = styled.button`
 `;
 
 const SideLayout = () => {
+  const isLoggedIn = !!localStorage.getItem("authToken");
+  if (!isLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,

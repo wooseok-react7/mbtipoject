@@ -22,6 +22,7 @@ const Bodybar = styled.div`
   height: auto;
   /* padding-top: 100px; */
   margin-top: 200px;
+  margin-bottom: 50px;
   /* height: 500px; */
   width: 100%;
   max-width: 900px;
