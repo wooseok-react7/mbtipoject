@@ -1,43 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import HomeImg1 from "../assets/image/HomeImg1.png";
+import HomeImg2 from "../assets/image/HomeImg2.png";
+import HomeImg3 from "../assets/image/HomeImg3.png";
+import HomeImg4 from "../assets/image/HomeImg4.png";
+
+const Bodybar = styled.div`
+  height: 500px;
+  width: 1055px;
+  margin-left: 420px;
+  margin-top: 100px;
+  background-color: green;
+  & img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+`;
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const imgslied = [HomeImg1, HomeImg2, HomeImg3, HomeImg4];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    setIsLoggedIn(!!token);
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % imgslied.length);
+    }, 3000);
+    return () => clearInterval(timer);
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    setIsLoggedIn(false);
-    alert("로그아웃이 되었습니다.");
+  const handleTestPage = () => {
+    navigate("/testPage");
   };
 
-  const handleMyPage = () => {
-    const token = localStorage.getItem("authToken");
-
-    if (token) {
-      navigate("/testPage");
-    } else {
-      alert("로그인이 필요한 페이지 입니다.");
-      navigate("/login");
-    }
-  };
-
-  const handleLogin = () => {
-    navigate("/login");
-  };
   return (
     <>
-      {/* <button onClick={handleMyPage}>MBTI 검사하기🫵</button>
-      {isLoggedIn ? (
-        <button onClick={handleLogout}>로그아웃</button>
-      ) : (
-        <button onClick={handleLogin}>로그인</button>
-      )} */}
+      <Bodybar>
+        <img src={imgslied[currentIndex]} alt={`Slide ${currentIndex + 1}`} />
+        <button onClick={handleTestPage}>MBTI 검사하기🫵</button>
+      </Bodybar>
     </>
   );
 };

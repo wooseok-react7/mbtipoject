@@ -1,4 +1,6 @@
 import React from "react";
+import { Link, Outlet } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
 
 const Sidebar = styled.div`
   background-color: white;
@@ -41,10 +43,10 @@ const TopScrollButton = styled.button`
   }
 
   .text {
-    font-size: 0.7em;
+    font-size: 10px;
     width: 100px;
     position: absolute;
-    color: white;
+    color: black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,21 +66,36 @@ const TopScrollButton = styled.button`
 `;
 
 const SideLayout = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <Sidebar>
-        <div>
-          <button onClick={handleLogout}>로그아웃</button>
+        <li>
+          <p>로고</p>
+        </li>
+        <button>로그아웃</button>
+
+        <li>
           <Link to="/">메인 화면</Link>
+        </li>
+
+        <li>
           <Link to="/mypage">내 정보</Link>
-          <TopScrollButton>
-            <svg height="1.2em" class="arrow" viewBox="0 0 512 512">
-              <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
-            </svg>
-            <p>Back to Top</p>
-          </TopScrollButton>
-        </div>
+        </li>
+
+        <TopScrollButton onClick={() => scrollToTop()}>
+          <svg height="1.2em" className="arrow" viewBox="0 0 512 512">
+            <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
+          </svg>
+        </TopScrollButton>
       </Sidebar>
+
       <Outlet />
     </>
   );

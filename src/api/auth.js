@@ -47,6 +47,13 @@ export const login = async (userData) => {
   }
 };
 
-export const getUserProfile = async (token) => {};
+export const getUserProfile = async (token) => {
+  const response = await axios.get(`${API_URL}/getUserProfile`, {
+    headers: {
+      Authorization: "Bearer AccessToken",
+    },
+  });
+};
+// 유저의 정보를 이걸로 받아옴
 
 export const updateProfile = async (formData) => {};

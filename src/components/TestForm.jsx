@@ -6,14 +6,15 @@ const TestForm = ({ onSubmit }) => {
     Array(questions.length).fill({ type: "", answer: "" })
   );
 
-  const handleChange = (index, answer) => {
+  const handleChange = (index, value) => {
     const newAnswers = [...answers];
-    newAnswers[index] = { type: questions[index].type, answer };
+    newAnswers[index] = { type: questions[index].type, answer: value };
     setAnswers(newAnswers);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Answers:", answers);
     onSubmit(answers);
   };
 
@@ -27,15 +28,17 @@ const TestForm = ({ onSubmit }) => {
               <label
                 key={i}
                 className={`block p-3 border rounded-lg cursor-pointer transition-colors duration-300 ${
-                  answers[index]?.answer === option ? "bg-gray-100" : ""
+                  answers[index]?.answer === q.type.split("/")[i]
+                    ? "bg-gray-100"
+                    : ""
                 } hover:bg-gray-100`}
               >
                 <input
                   type="radio"
                   name={`question-${index}`}
-                  value={option}
-                  checked={answers[index]?.answer === option}
-                  onChange={() => handleChange(index, option)}
+                  value={q.type.split("/")[i]}
+                  checked={answers[index]?.answer === q.type.split("/")[i]}
+                  onChange={() => handleChange(index, q.type.split("/")[i])}
                   className="mr-2 text-primary-color"
                 />
                 {option}

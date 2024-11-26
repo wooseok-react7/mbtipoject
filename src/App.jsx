@@ -5,6 +5,8 @@ import HomePage from "./pages/HomePage";
 import MyPage from "./pages/MyPage";
 import TestPage from "./pages/TestPage";
 import HeaderLayout from "./components/HeaderLayout";
+import SideLayout from "./components/SideLayout";
+import ResultsPage from "./pages/ResultsPage";
 
 function App() {
   return (
@@ -17,9 +19,12 @@ function App() {
           <Route element={<HeaderLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="mypage" element={<MyPage />} />
+            <Route path="results" element={<ResultsPage />} />
           </Route>
 
-          <Route path="/testPage" element={<TestPage />} />
+          <Route element={<SideLayout />}>
+            <Route path="/testPage" element={<TestPage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
