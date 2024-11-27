@@ -5,6 +5,7 @@ import TestForm from "../components/TestForm";
 import { calculateMBTI, mbtiDescriptions } from "../utils/mbtiCalculator";
 import { createTestResult } from "../api/testResults";
 import { useNavigate } from "react-router-dom";
+import "../tailwindcss/TestPage.css";
 
 const Wrapper = styled.div`
   display: flex;
@@ -67,7 +68,7 @@ const TestPage = () => {
             {!result ? (
               <>
                 <h1 className="text-3xl font-bold text-primary-color mb-6">
-                  MBTI 테스트
+                  Who Are yo🫵 MBTI
                 </h1>
                 <TestForm onSubmit={handleTestSubmit} />
               </>

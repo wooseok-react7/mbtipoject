@@ -9,21 +9,25 @@ const Heabar = styled.header`
   background-color: #fbfbfb;
   height: 100px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LoginBtn = styled.button`
+  background-color: white;
+  height: 35px;
+  position: absolute;
+  left: 1800px;
 `;
 
 const HeaderLayout = () => {
   const navigate = useNavigate();
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleMypage = () => {
     navigate("/mypage");
   };
 
   const { isAuthenticated, logout } = useContext(AuthContext);
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("authToken");
-  //   setIsLoggedIn(!!token);
-  // }, []);
 
   const handleTestPage = () => {
     const token = localStorage.getItem("authToken");
@@ -43,21 +47,20 @@ const HeaderLayout = () => {
 
   return (
     <>
-      <ToastContainer position="top-center" />
+      <ToastContainer />
       <Heabar>
-        <div>
-          <button onClick={handleTestPage}>MBTI 검사하기🫵</button>
-          {isAuthenticated ? (
-            <button onClick={logout}>로그아웃</button>
-          ) : (
-            <button onClick={handleLogin}>로그인 </button>
-          )}
-          <p>
-            <Link to="/mypage">내 정보</Link>
-            <Link onClick={handleMypage}>진짜 내 정보 </Link>
-            <Link to="/results">테스트 결과</Link>
-          </p>
-        </div>
+        <HeaderTitle>Yo🫵r MBTI</HeaderTitle>
+        <button onClick={handleTestPage}>YOUR MBTI🫵</button>
+        <LinkTag>
+          <Link to="/mypage">내 정보</Link>
+          <Link onClick={handleMypage}>진짜 내 정보 </Link>
+          <Link to="/results">테스트 결과</Link>
+        </LinkTag>
+        {isAuthenticated ? (
+          <LoginBtn onClick={logout}>로그아웃</LoginBtn>
+        ) : (
+          <LoginBtn onClick={handleLogin}>로그인 </LoginBtn>
+        )}
       </Heabar>
 
       {/* <Bodybar></Bodybar> */}
@@ -66,5 +69,20 @@ const HeaderLayout = () => {
     </>
   );
 };
+
+const LinkTag = styled.div`
+  margin-left: 100px;
+`;
+
+const HeaderTitle = styled.h1`
+  position: absolute;
+  left: 70px;
+  top: 10px;
+  background-color: green;
+
+  & :hover {
+    background-color: red;
+  }
+`;
 
 export default HeaderLayout;
