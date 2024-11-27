@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { updateProfile } from "../api/auth";
 import { AuthContext } from "../components/AuthProvider";
+import { toast } from "react-toastify";
 
 const MyPage = () => {
   const { user, setUser } = useContext(AuthContext);
@@ -13,16 +14,9 @@ const MyPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const accessToken = user?.accessToken;
-    // console.log(accessToken);
-    // if (!accessToken) {
-    //   alert("로그인이 필요합니다.");
-    //   return;
-    // }
-
     const accessToken = localStorage.getItem("accessToken"); // token 확인
     if (!accessToken) {
-      alert("로그인이 필요합니다.");
+      toast("로그인이 필요합니다.");
       return;
     }
 
@@ -33,12 +27,12 @@ const MyPage = () => {
       console.log("formData", formData);
       const data = await updateProfile(formData, accessToken);
       if (data.success) {
-        alert("프로필 수정이 완료되었습니다.");
+        toast("프로필 수정이 완료되었습니다.");
         setUser({ ...user, nickname }); // 응답 데이터 기반으로 업데이트
       }
     } catch (error) {
       console.error(error); // 디버깅용
-      alert(
+      toast(
         `프로필 수정에 실패했습니다. 다시 시도해주세요. ${
           error.response?.data?.message || "알 수 없는 오류"
         }`

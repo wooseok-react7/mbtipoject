@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 
@@ -23,7 +24,7 @@ export const AuthProvider = ({ children }) => {
     console.log("하하");
     localStorage.removeItem("authToken");
     setIsAuthenticated(false);
-    alert("로그아웃이 되었습니다.");
+    toast("로그아웃이 되었습니다.");
     navigate("/");
   };
 

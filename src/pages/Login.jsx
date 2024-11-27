@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../api/auth";
 import axios from "axios";
 import { AuthContext } from "../components/AuthProvider";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,21 +21,19 @@ const Login = () => {
 
     try {
       const response = await login(userData);
-      console.log("res", response);
+      console.log(toast);
       setUser({ nickname: response.nickname, userId: response.userId });
       if (response.success) {
-        alert("로그인 성공!");
-        // setUser()
-        // console.log("받은 토큰:", response.token);
+        toast("로그인 성공!");
         // 토큰 저장 (예: localStorage)
         loginContext();
         // 홈 이동
       } else {
-        alert(response.message || "로그인에 실패했습니다.");
+        toast(response.message || "로그인에 실패했습니다.");
       }
     } catch (error) {
       console.error("로그인 중 오류:", error.message);
-      alert(error.message);
+      toast(error.message);
     }
   };
 
@@ -64,25 +64,3 @@ const Login = () => {
 };
 
 export default Login;
-
-//   const userData = {
-//     id: userId,
-//     password,
-//   };
-//   try {
-//     const response = await login(userData);
-//     console.log(response);
-//     if (response.success) {
-//       alert("로그인 성공!");
-//       console.log("받은 토큰:", response.token);
-//       // 토큰 저장 (예: localStorage)
-//       localStorage.setItem("authToken", response.token);
-//       // 홈 이동
-//       navigate("/");
-//     } else {
-//       alert(response.message || "로그인에 실패했습니다.");
-//     }
-//   } catch (error) {
-//     console.error("로그인 중 오류:", error.message);
-//     alert(error.message);
-//   }

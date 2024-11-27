@@ -2,10 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { AuthContext } from "./AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // 이 부분이 있어야 함
 
 const Heabar = styled.header`
-  background-color: gray;
+  background-color: #fbfbfb;
   height: 100px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 `;
 
 const HeaderLayout = () => {
@@ -28,7 +31,7 @@ const HeaderLayout = () => {
     if (token) {
       navigate("/testPage");
     } else {
-      alert("로그인이 필요한 페이지 입니다.");
+      toast("로그인이 필요한 페이지 입니다.");
       navigate("/login");
     }
   };
@@ -40,6 +43,7 @@ const HeaderLayout = () => {
 
   return (
     <>
+      <ToastContainer position="top-center" />
       <Heabar>
         <div>
           <button onClick={handleTestPage}>MBTI 검사하기🫵</button>
