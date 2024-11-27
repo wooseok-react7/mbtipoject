@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Link, Navigate, Outlet } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { AuthContext } from "./AuthProvider";
+import MbtiSide from "../assets/image/MbtiSide.png";
 
 const slideInBottom = keyframes`
   0% {
@@ -62,7 +63,7 @@ const Sidebar = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 15px;
-  gap: 80px;
+  gap: 60px;
   position: fixed;
   width: 120px;
   height: 500px;
@@ -88,25 +89,32 @@ const SideLayout = () => {
   };
 
   const handleLogin = () => {
-    navigate("/login");
+    Navigate("/login");
+  };
+
+  const handleLogout = (event) => {
+    event.preventDefault(); // 기본 동작 방지
+    logout(); // Context의 로그아웃 함수 호출
   };
 
   return (
     <>
       <Sidebar>
-        <li>
-          <p>로고</p>
-        </li>
-
+        <SideHomeImg src={MbtiSide} />
         {isAuthenticated ? (
-          <button onClick={logout}>로그아웃</button>
+          <SideLink to="#" onClick={handleLogout}>
+            로그아웃
+          </SideLink>
         ) : (
-          <button onClick={handleLogin}>로그인 </button>
+          <SideLink to="#" onClick={handleLogin}>
+            로그인
+          </SideLink>
         )}
 
-        <Link to="/">메인 화면</Link>
-        <Link to="/mypage">내 정보</Link>
-        <Link to="/results">모두의 MBTI</Link>
+        <SideLink to="/">메인 화면</SideLink>
+        <SideLink to="/mypage">내 정보</SideLink>
+        <SideLink to="/results">나만의 MBTI</SideLink>
+        <SideLink to="/resultlist">모두의 MBTI</SideLink>
         <TopScrollButton onClick={() => scrollToTop()}>
           <svg height="1.2em" className="arrow" viewBox="0 0 512 512">
             <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
@@ -118,5 +126,24 @@ const SideLayout = () => {
     </>
   );
 };
+
+const SideHomeImg = styled.img`
+  height: 100px;
+`;
+
+const SideLink = styled(Link)`
+  text-decoration: none; /* 밑줄 없앰 */
+  color: inherit; /* 부모 색상 유지 */
+  transition: transform 0.2s ease, color 0.2s ease;
+  &:hover {
+    transform: scale(1.1); /* 크기를 1.1배 확대 */
+    color: #2ecc71; /* 색상 변경 (옵션) */
+  }
+  &:active,
+  &:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+`;
 
 export default SideLayout;

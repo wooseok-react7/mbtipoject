@@ -10,6 +10,7 @@ import ResultsPage from "./pages/ResultsPage";
 import { AuthProvider, ProtectedRoute } from "./components/AuthProvider";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
+import TestResultList from "./pages/TestResultList";
 
 function App() {
   return (
@@ -18,8 +19,8 @@ function App() {
       <BrowserRouter>
         <AuthProvider>
           <Routes>
-            <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
 
             <Route element={<HeaderLayout />}>
               <Route path="/" element={<HomePage />} />
@@ -31,6 +32,7 @@ function App() {
             <Route element={<SideLayout />}>
               <Route path="results" element={<ResultsPage />} />
               <Route path="/testPage" element={<TestPage />} />
+              <Route path="/resultlist" element={<TestResultList />} />
             </Route>
           </Routes>
         </AuthProvider>

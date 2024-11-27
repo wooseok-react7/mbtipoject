@@ -3,7 +3,8 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { AuthContext } from "./AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // 이 부분이 있어야 함
+import "react-toastify/dist/ReactToastify.css";
+import MbtiHeader from "../assets/image/MbtiHeader.png";
 
 const Heabar = styled.header`
   background-color: #fbfbfb;
@@ -49,13 +50,12 @@ const HeaderLayout = () => {
     <>
       <ToastContainer />
       <Heabar>
-        <HeaderTitle>Yo🫵r MBTI</HeaderTitle>
-        <button onClick={handleTestPage}>YOUR MBTI🫵</button>
-        <LinkTag>
-          <Link to="/mypage">내 정보</Link>
-          <Link onClick={handleMypage}>진짜 내 정보 </Link>
-          <Link to="/results">테스트 결과</Link>
-        </LinkTag>
+        <MbtiHeaderImg src={MbtiHeader} />
+        <HeaderTitle> MBTI</HeaderTitle>
+        <HeaderLink to="/">Main</HeaderLink>
+        <HeaderLink to="/mypage">모두의 Mbti</HeaderLink>
+        <HeaderLink to="/mypage">내 정보 </HeaderLink>
+        <HeaderLink to="/results">테스트 결과</HeaderLink>
         {isAuthenticated ? (
           <LoginBtn onClick={logout}>로그아웃</LoginBtn>
         ) : (
@@ -70,15 +70,36 @@ const HeaderLayout = () => {
   );
 };
 
-const LinkTag = styled.div`
-  margin-left: 100px;
+const MbtiHeaderImg = styled.img`
+  height: 130px;
+  position: absolute;
+  left: 50px;
+  top: 1px;
+`;
+
+const HeaderLink = styled(Link)`
+  font-size: 20px;
+  margin: 50px;
+  text-decoration: none; /* 밑줄 없앰 */
+  color: inherit; /* 부모 색상 유지 */
+  transition: transform 0.2s ease, color 0.2s ease;
+  &:hover {
+    transform: scale(1.1); /* 크기를 1.1배 확대 */
+    color: #2ecc71; /* 색상 변경 (옵션) */
+  }
+  &:active,
+  &:visited {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 const HeaderTitle = styled.h1`
   position: absolute;
-  left: 70px;
-  top: 10px;
-  background-color: green;
+  left: 150px;
+  top: 72px;
+  font-size: 10px;
+  /* background-color: green; */
 
   & :hover {
     background-color: red;

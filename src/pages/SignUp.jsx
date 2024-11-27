@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { register } from "../api/auth";
+import styled from "styled-components";
 
 const SignUp = () => {
   const [userId, setUserId] = useState("");
@@ -61,39 +62,78 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <label>아이디</label>
-      <input
-        type="text"
-        value={userId}
-        onChange={(e) => setUserId(e.target.value)}
-      ></input>
+    <Wrapper>
+      <LoginCard>
+        <label>아이디</label>
+        <input
+          type="text"
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
+        ></input>
 
-      <label>닉네임</label>
-      <input
-        type="text"
-        value={userNickname}
-        onChange={(e) => setUserNickname(e.target.value)}
-      ></input>
+        <label>닉네임</label>
+        <input
+          type="text"
+          value={userNickname}
+          onChange={(e) => setUserNickname(e.target.value)}
+        ></input>
 
-      <label>비밀번호</label>
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      ></input>
+        <label>비밀번호</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        ></input>
 
-      <label>비밀번호 확인</label>
-      <input
-        type="password"
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
-      ></input>
+        <label>비밀번호 확인</label>
+        <input
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        ></input>
 
-      <button onClick={goSignUp}>회원가입</button>
-      <button onClick={handleHome}>뒤로가기</button>
-    </div>
+        <button onClick={goSignUp}>회원가입</button>
+        <button onClick={handleHome}>뒤로가기</button>
+      </LoginCard>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  display: flex;
+  background-color: wheat;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+`;
+const MbtiLoginImg = styled.img`
+  margin-top: 90px;
+  height: 100px;
+  transition: transform 0.2s ease, color 0.2s ease;
+  &:hover {
+    transform: scale(1.1); /* 크기를 1.1배 확대 */
+    color: #2ecc71; /* 색상 변경 (옵션) */
+  }
+`;
+
+const LoginImg = styled.div`
+  gap: 10px;
+`;
+
+const LoginCard = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 100px;
+  position: absolute;
+  top: 120px;
+  gap: 30px;
+  width: 500px;
+  height: 600px;
+  background-color: wheat;
+  border-radius: 10px;
+`;
 
 export default SignUp;

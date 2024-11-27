@@ -68,7 +68,7 @@ const TestPage = () => {
             {!result ? (
               <>
                 <h1 className="text-3xl font-bold text-primary-color mb-6">
-                  Who Are yo🫵 MBTI
+                  Who Are 🫵 MBTI
                 </h1>
                 <TestForm onSubmit={handleTestSubmit} />
               </>

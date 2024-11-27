@@ -1,69 +1,49 @@
 {
   "testResults": [
     {
-      "mbtiResult": "INTP",
-      "timestamp": "2024-11-26T06:58:08.726Z",
+      "mbtiResult": "ENTJ",
+      "timestamp": "2024-11-27T15:33:57.046Z",
+      "id": 1
+    },
+    {
+      "mbtiResult": "ESTJ",
+      "timestamp": "2024-11-27T15:41:13.649Z",
+      "id": 2
+    },
+    {
+      "mbtiResult": "ESTJ",
+      "timestamp": "2024-11-27T15:41:17.954Z",
+      "id": 3
+    },
+    {
+      "mbtiResult": "ESTJ",
+      "timestamp": "2024-11-27T15:41:24.396Z",
+      "id": 4
+    },
+    {
+      "mbtiResult": "ESTJ",
+      "timestamp": "2024-11-27T15:41:27.967Z",
       "id": 5
     },
     {
       "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T15:40:28.042Z",
+      "timestamp": "2024-11-27T15:41:31.641Z",
       "id": 6
     },
     {
       "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T15:54:35.873Z",
+      "timestamp": "2024-11-27T15:41:35.969Z",
       "id": 7
     },
     {
       "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-26T16:14:12.312Z",
+      "timestamp": "2024-11-27T16:56:45.659Z",
       "id": 8
     },
     {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-27T02:05:37.540Z",
+      "mbtiResult": "INFP",
+      "timestamp": "2024-11-27T17:43:49.186Z",
       "id": 9
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-27T02:31:15.275Z",
-      "id": 10
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-27T02:46:47.199Z",
-      "id": 11
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-27T03:10:07.975Z",
-      "id": 13
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-27T03:19:36.137Z",
-      "id": 14
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-27T09:26:34.007Z",
-      "id": 15
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-27T09:54:09.066Z",
-      "id": 16
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-27T10:25:05.060Z",
-      "id": 17
-    },
-    {
-      "mbtiResult": "ESTJ",
-      "timestamp": "2024-11-27T10:26:14.916Z",
-      "id": 18
     }
   ]
 }

@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { updateProfile } from "../api/auth";
 import { AuthContext } from "../components/AuthProvider";
 import { toast } from "react-toastify";
+import styled from "styled-components";
 
 const MyPage = () => {
   const { user, setUser } = useContext(AuthContext);
@@ -42,19 +43,34 @@ const MyPage = () => {
 
   return (
     <div>
-      <div>
+      <MyPageCard>
         <h1>{user?.nickname || "닉네임을 설정해 주세요."}님 안녕하세요</h1>
         {/* user가 null인지 undefined인지 확인하고 user에 있는 nickname을 가져옴 */}
         <form onSubmit={handleSubmit}>
           <div>
             <label>닉네임</label>
-            <input onChange={handleNicknameChange} />
+            <NickChange
+              placeholder="변경하실 닉네임을 입력해주세요."
+              onChange={handleNicknameChange}
+            />
+            <button type="submit">프로필 업데이트</button>
           </div>
-          <button type="submit">프로필 업데이트</button>
         </form>
-      </div>
+      </MyPageCard>
     </div>
   );
 };
+
+const NickChange = styled.input`
+  padding: 20px;
+  margin-top: 30px;
+`;
+
+const MyPageCard = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export default MyPage;
