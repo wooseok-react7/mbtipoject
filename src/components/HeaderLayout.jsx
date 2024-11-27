@@ -52,10 +52,11 @@ const HeaderLayout = () => {
           ) : (
             <button onClick={handleLogin}>로그인 </button>
           )}
-          <li>
+          <p>
             <Link to="/mypage">내 정보</Link>
-          </li>
-          <Link onClick={handleMypage}>진짜 내 정보 </Link>
+            <Link onClick={handleMypage}>진짜 내 정보 </Link>
+            <Link to="/results">테스트 결과</Link>
+          </p>
         </div>
       </Heabar>
 

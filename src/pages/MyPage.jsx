@@ -43,7 +43,8 @@ const MyPage = () => {
   return (
     <div>
       <div>
-        <h1>프로필 수정</h1>
+        <h1>{user?.nickname || "닉네임을 설정해 주세요."}님 안녕하세요</h1>
+        {/* user가 null인지 undefined인지 확인하고 user에 있는 nickname을 가져옴 */}
         <form onSubmit={handleSubmit}>
           <div>
             <label>닉네임</label>
