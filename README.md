@@ -1,109 +1,87 @@
-📋 주요 기능
-🔍 MBTI 검사 진행
-사용자는 질문에 답변하여 자신의 MBTI 성격 유형을 파악할 수 있습니다.
-
-📊 결과 확인
-검사가 완료되면 사용자 성격 유형과 상세한 설명이 제공됩니다.
-
-📚 결과 리스트
-16가지 성격 유형에 대한 정보를 한눈에 볼 수 있으며, 다른 유형과의 비교도 가능합니다.
-
-👤 사용자 정보 입력
-검사를 시작하기 전에 사용자 이름 등 기본 정보를 입력받아 개인화된 결과를 제공합니다.
 
 
 
-💻 기술 스택
-프론트엔드
+
+
+나의 말:
+![홈](https://github.com/user-attachments/assets/c317e1ab-de07-4dfb-824b-e3219fd4bb1c)
+![테스트 페이지](https://github.com/user-attachments/assets/25c458f5-efa8-48dc-9f37-3103c40d7966)
+![결과 리스트](https://github.com/user-attachments/assets/8a113104-49d5-4862-a4e8-4c661c53f630)
+![내 정보](https://github.com/user-attachments/assets/b81016c0-7a20-40cf-ba7f-855d3bc2ff02)
+
+이 프로젝트는 사용자가 MBTI 성격 유형을 검사하고 결과를 확인할 수 있는 웹 애플리케이션입니다. React와 Vite를 기반으로 개발되었으며, Tailwind CSS와 styld component를 활용하여 스타일링되었습니다.
+
+
+주요 기능
+MBTI 검사 진행: 사용자는 일련의 질문에 답변하여 자신의 MBTI 성격 유형을 파악할 수 있습니다.
+결과 확인: 검사 완료 후, 해당 성격 유형에 대한 상세한 설명과 특징을 제공합니다.
+결과 리스트: 다양한 성격 유형에 대한 정보를 목록 형태로 열람할 수 있습니다.
+사용자 정보 입력: 검사 전에 이름과 같은 기본 정보를 입력받습니다.
+기술 스택
+프론트엔드:
 React: UI 구성 및 상태 관리를 위해 사용되었습니다.
-Vite: 빠르고 경량화된 개발 환경 제공.
-Tailwind CSS: 효율적이고 간결한 스타일링.
-Styled Components: 컴포넌트 기반 스타일링으로 동적 스타일 제공.
-백엔드
-Node.js 및 Express: API 서버 구축과 데이터 관리를 위해 사용되었습니다.
-데이터 관리
-JSON 파일: 질문 및 결과 데이터를 관리하는 간단한 형식으로 활용.
+Vite: 빠른 개발 환경 구성을 위해 선택되었습니다.
+Tailwind CSS: 효율적인 스타일링을 위해 활용되었습니다.
+백엔드:
+Node.js 및 Express: 간단한 서버 설정과 API 구성을 위해 사용되었습니다.
+데이터 관리:
+JSON 파일: 질문과 결과 데이터를 저장하고 불러오는 데 사용되었습니다.
 
 
-
-
-📂 프로젝트 구조
+프로젝트 구조
 mbtipoject/
-├── public/              # 정적 파일들
-├── src/                 # 주요 소스 코드
-│   ├── components/      # React 컴포넌트들
-│   │   ├── Question.js  # 질문 표시 및 응답 수집
-│   │   ├── Result.js    # 검사 결과 표시
-│   │   ├── ResultList.js# 성격 유형 리스트
-│   │   └── UserInfo.js  # 사용자 정보 입력
-│   ├── data/            # JSON 데이터
-│   │   ├── questions.json # 질문 데이터
-│   │   └── results.json   # 결과 데이터
-│   ├── styles/          # 스타일 파일
-│   │   └── tailwind.css # Tailwind CSS 설정
-│   ├── App.js           # 라우팅 및 레이아웃
-│   └── main.jsx         # React 진입점
-├── server.js            # Express 서버
-├── package.json         # 의존성 및 스크립트
-└── README.md            # 프로젝트 설명
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Question.js
+│   │   ├── Result.js
+│   │   ├── ResultList.js
+│   │   └── UserInfo.js
+│   ├── data/
+│   │   ├── questions.json
+│   │   └── results.json
+│   ├── styles/
+│   │   └── tailwind.css
+│   ├── App.js
+│   └── main.jsx
+├── server.js
+├── package.json
+└── README.md
+
+
+public/: 정적 파일들이 위치합니다.
+src/: 애플리케이션의 주요 소스 코드가 포함되어 있습니다.
+components/: 재사용 가능한 React 컴포넌트들이 위치합니다.
+Question.js: 각 질문을 표시하고 응답을 수집하는 컴포넌트입니다.
+Result.js: 검사 결과를 보여주는 컴포넌트입니다.
+ResultList.js: 모든 성격 유형의 결과를 목록으로 보여주는 컴포넌트입니다.
+UserInfo.js: 사용자 정보를 입력받는 컴포넌트입니다.
+data/: 질문과 결과에 대한 JSON 데이터가 저장되어 있습니다.
+questions.json: MBTI 검사를 위한 질문 목록이 포함되어 있습니다.
+results.json: 각 MBTI 유형에 대한 결과 정보가 포함되어 있습니다.
+styles/: 스타일링 관련 파일이 위치합니다.
+tailwind.css: Tailwind CSS 설정 파일입니다.
+App.js: 애플리케이션의 주요 라우팅과 레이아웃을 담당합니다.
+main.jsx: React 애플리케이션의 진입점입니다.
+server.js: 간단한 Express 서버 설정 파일입니다.
+package.json: 프로젝트의 의존성 및 스크립트 정보가 포함되어 있습니다.
+README.md: 프로젝트에 대한 설명서입니다.
 
 
 
-
-
-🧩 주요 컴포넌트 설명
-Question.js:
-questions.json 데이터를 기반으로 질문을 표시하고 사용자의 선택을 기록합니다.
-
-Result.js:
-사용자의 응답 데이터를 분석하여 MBTI 성격 유형을 결정하고 상세한 결과를 보여줍니다.
-
-ResultList.js:
-모든 성격 유형을 나열하며 각 유형의 설명을 제공합니다.
-
-UserInfo.js:
-사용자가 이름 등 개인 정보를 입력할 수 있도록 구성된 컴포넌트입니다.
-
-📊 데이터 파일 설명
-questions.json
-MBTI 검사를 위한 질문과 선택지 데이터입니다.
-
-[
-  {
-    "id": 1,
-    "question": "어떤 상황에서 더 편안함을 느끼나요?",
-    "option1": "계획을 세워 규칙적으로 행동할 때",
-    "option2": "즉흥적으로 행동하고 유연할 때"
-  }
-]
-results.json
-각 MBTI 유형의 설명과 특징, 강점 및 약점을 포함한 데이터입니다.
-
-{
-  "ENFP": {
-    "title": "열정적인 사색가",
-    "description": "새로운 아이디어를 탐구하고, 사람들과 활발히 교류하는 것을 즐깁니다.",
-    "strengths": ["창의적", "사교적", "열정적"],
-    "weaknesses": ["충동적", "집중력 부족"]
-  }
-}
+주요 컴포넌트 설명
+Question.js: questions.json 파일에서 질문 데이터를 불러와 사용자에게 표시하고, 사용자의 응답을 수집합니다.
+Result.js: 사용자의 응답을 기반으로 MBTI 유형을 결정하고, 해당 유형에 대한 상세 정보를 results.json에서 가져와 표시합니다.
+ResultList.js: 모든 MBTI 유형에 대한 정보를 목록 형태로 제공하여 사용자가 다양한 성격 유형을 탐색할 수 있게 합니다.
+UserInfo.js: 검사 시작 전에 사용자의 이름 등의 기본 정보를 입력받습니다.
 
 
 
+데이터 파일 설명
+questions.json: MBTI 검사를 위한 질문 목록이 배열 형태로 저장되어 있습니다. 각 질문은 텍스트와 선택지로 구성되어 있습니다.
+results.json: 각 MBTI 유형에 대한 설명, 특징, 추천 직업 등이 객체 형태로 저장되어 있습니다.
 
 
-🌐 서버 설정
-server.js:
-간단한 Express 서버로 정적 파일을 제공하고 필요한 API 엔드포인트를 구성합니다.
-🖼️ 프로젝트 스크린샷
-1. 홈 화면
-홈
 
-2. 테스트 페이지
-테스트 페이지
-
-3. 결과 리스트
-결과 리스트
-
-4. 내 정보 입력
-내 정보
+서버 설정
+server.js 파일은 간단한 Express 서버를 설정하여 정적 파일을 제공하고, 필요한 API 엔드포인트를 구성합니다.
