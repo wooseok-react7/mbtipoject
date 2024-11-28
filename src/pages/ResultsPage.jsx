@@ -1,65 +1,94 @@
 import React, { useEffect, useState } from "react";
-import { getTestResults } from "../api/testResults";
-import { deleteTestResult } from "../api/testResults";
+import {
+  getTestResults,
+  updateTestResultVisibility,
+  deleteTestResult,
+} from "../api/testResults";
 import { mbtiDescriptions } from "../utils/mbtiCalculator";
 import styled from "styled-components";
 
-//뭘 불러와야 되냐 내 db.json에 있는 데이터를 testResults.js를 이용해서
-
 const ResultsPage = () => {
-  const [testResults, setTestResults] = useState([]); // api 데이터 저장
-  const [loading, setLoading] = useState(true); // 로딩 상태를 관리
+  const [testResults, setTestResults] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchTestResults = async () => {
     try {
-      setLoading(true); // 데잍처를 가져오는 중임을 표시함
-      const results = await getTestResults(); //api 호출함
-      setTestResults(results); // 가져온 데이터를 상태에 저장함
+      setLoading(true);
+      const results = await getTestResults();
+      console.log("Fetched results after visibility update:", results); // 결과 출력
+      setTestResults(results);
     } catch (error) {
-      console.error("Error fetching test results", error); // api 호출 실패시 에러 출력
+      console.error("Error fetching test results", error);
     } finally {
-      setLoading(false); // 데이처를 가져오면 로딩 상탤르 false로 변경
-      // finally : 성공하든 실패하든 데이터를 가져오는 작업이 끝난 후 로딩 상태를 false로 변경
+      setLoading(false);
+    }
+  };
+
+  const handleToggleVisibility = async (id, currentVisibility) => {
+    try {
+      const response = await updateTestResultVisibility(id, !currentVisibility);
+      console.log("Visibility updated:", response); // 서버 응답 확인
+      setTestResults((prevResults) =>
+        prevResults.map((result) =>
+          result.id === id
+            ? { ...result, visibility: !currentVisibility }
+            : result
+        )
+      );
+    } catch (error) {
+      console.error("Error updating visibility:", error);
     }
   };
 
   const handleDelete = async (id) => {
-    console.log("삭제", id);
-    if (!id) {
-      console.error("id 값이 유효하지 않다?", id);
-      return;
-    }
     try {
       await deleteTestResult(id);
-      setTestResults((prevResulus) =>
-        prevResulus.filter((result) => result.id !== id)
+      setTestResults((prevResults) =>
+        prevResults.filter((result) => result.id !== id)
       );
     } catch (error) {
-      console.error("삭제중 오류 ㅋㅋ", error);
+      console.error("Error deleting test result:", error);
     }
   };
 
   useEffect(() => {
     fetchTestResults();
-    // 컴포넌트가 처음 렌더링될 때 fetchTestResults 실행
   }, []);
 
   if (loading) {
-    return <div>데이터를 불러오고 있습니다 잠시만 기달려주세요.</div>;
+    return <div>데이터를 불러오고 있습니다. 잠시만 기다려주세요.</div>;
   }
 
   return (
     <Wrapper>
-      <h1>MBTI</h1>
-      {testResults.map((results) => (
-        <ListCard key={results.id}>
-          {results.mbtiResult} -
-          {new Date(results.timestamp).toLocaleDateString()}
-          <p className="text-lg text-gray-700 mb-6">
-            {mbtiDescriptions[results.mbtiResult] ||
-              "해당 성격 유형에 대한 설명이 없습니다."}
+      <h1>MBTI 결과</h1>
+      {testResults.map((result) => (
+        <ListCard key={result.id}>
+          <h3>
+            {result.visibility ? result.mbtiResult : "비공개 상태입니다."}
+          </h3>
+          <p>
+            {result.visibility
+              ? mbtiDescriptions[result.mbtiResult] ||
+                "해당 성격 유형에 대한 설명이 없습니다."
+              : ""}
           </p>
-          <button onClick={() => handleDelete(results.id)}>삭제</button>
+          <p>공개 여부: {result.visibility ? "공개" : "비공개"}</p>
+          <div>
+            <button
+              onClick={() =>
+                handleToggleVisibility(result.id, result.visibility)
+              }
+            >
+              {result.visibility ? "비공개로 전환" : "공개로 전환"}
+            </button>
+            <button
+              onClick={() => handleDelete(result.id)}
+              style={{ marginLeft: "10px" }}
+            >
+              삭제
+            </button>
+          </div>
         </ListCard>
       ))}
     </Wrapper>
@@ -68,11 +97,11 @@ const ResultsPage = () => {
 
 const Wrapper = styled.div`
   background-color: rgb(246, 249, 250);
+  padding: 20px;
 `;
 
 const ListCard = styled.div`
   width: 800px;
-  height: 300px;
   background-color: white;
   margin: 20px auto;
   padding: 20px;
@@ -80,10 +109,7 @@ const ListCard = styled.div`
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  font-size: 1.2rem;
+  align-items: flex-start;
 `;
 
 export default ResultsPage;

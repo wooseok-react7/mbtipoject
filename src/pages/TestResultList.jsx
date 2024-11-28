@@ -20,10 +20,8 @@ const Bodybar = styled.div`
   height: auto;
 
   flex-direction: column;
-  /* padding-top: 100px; */
   margin-top: 200px;
   margin-bottom: 50px;
-  /* height: 500px; */
   width: 100%;
   max-width: 900px;
   & > div {
@@ -41,10 +39,19 @@ const TestResultList = () => {
 
   const fetchTestResults = async () => {
     try {
-      setIsLoading(true); // 로딩 시작
+      setIsLoading(true);
       const response = await axios.get(API_URL);
-      console.log("API Response:", response.data); // 전체 응답 확인
-      setTestResults(response.data ?? []); // 데이터 설정
+
+      // 공개 데이터만 필터링하고 누락된 mbtiDescriptions 처리
+      const visibleResults = response.data
+        .filter((result) => result.visibility === true) // 공개 데이터만 필터링
+        .map((result) => ({
+          ...result,
+          mbtiDescriptions:
+            result.mbtiDescriptions || "해당 성격 유형에 대한 설명이 없습니다.",
+        }));
+
+      setTestResults(visibleResults); // 필터링된 데이터 설정
     } catch (error) {
       console.error("Error fetching test results:", error);
       setTestResults([]); // 에러 발생 시 빈 배열로 설정
@@ -81,8 +88,12 @@ const TestResultList = () => {
                 </p>
                 <p>
                   <strong>생성 시간:</strong>{" "}
-                  {new Date(result.timestamp).toLocaleString()}
+                  {result.timestamp
+                    ? new Date(result.timestamp).toLocaleString()
+                    : "유효한 생성 시간이 없습니다."}
                 </p>
+                <strong>MBTI</strong>
+                {result.mbtiDescriptions}
               </Bodybar>
             ))
           ) : (

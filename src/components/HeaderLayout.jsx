@@ -53,7 +53,7 @@ const HeaderLayout = () => {
         <MbtiHeaderImg src={MbtiHeader} />
         <HeaderTitle> MBTI</HeaderTitle>
         <HeaderLink to="/">Main</HeaderLink>
-        <HeaderLink to="/mypage">모두의 Mbti</HeaderLink>
+        <HeaderLink to="/resultlist">모두의 Mbti</HeaderLink>
         <HeaderLink to="/mypage">내 정보 </HeaderLink>
         <HeaderLink to="/results">테스트 결과</HeaderLink>
         {isAuthenticated ? (
