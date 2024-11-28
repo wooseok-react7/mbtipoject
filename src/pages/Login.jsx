@@ -47,6 +47,10 @@ const Login = () => {
     navigate("/signup");
   };
 
+  const handleHome = () => {
+    navigate("/");
+  };
+
   return (
     <Wrapper>
       <LoginCard>
@@ -64,6 +68,7 @@ const Login = () => {
         ></input>
         <button onClick={handleLogin}>로그인</button>
         <button onClick={handleSignup}>회원가입</button>
+        <button onClick={handleHome}>뒤로 가기</button>
         <LoginImg>
           <MbtiLoginImg src={MbtiLogin1} />
           <MbtiLoginImg src={MbtiLogin2} />
