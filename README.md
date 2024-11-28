@@ -1,8 +1,9 @@
 이 프로젝트는 사용자가 MBTI 성격 유형을 검사하고 결과를 확인할 수 있는 웹 애플리케이션입니다. React와 Vite를 기반으로 개발되었으며, Tailwind CSS와 styld component를 활용하여 스타일링되었습니다.
-![홈](https://github.com/user-![내 정보](https://github.com/user-attachments/assets/9ded3370-3bbf-4354-87c6-cc56b1049a14)
-![결과 리스트](https://github.com/user-attachments/assets/cd6d0ab2-ced8-4cb9-b01e-883a9833901a)
-attachments/assets/bd0cf51e-e48e-49f0-8002-cdda177c01d1)
-![테스트 페이지](https://github.com/user-attachments/assets/a54e3006-74ba-4a35-bb8c-3de71f116602)
+![내 정보](https://github.com/user-attachments/assets/7d2fedac-bedc-495d-8aa5-45613ed26faa)
+![결과 리스트](https://github.com/user-attachments/assets/fe0eeaeb-daf0-4ff4-8c1a-cd8a9dccbc2b)
+![테스트 페이지](https://github.com/user-attachments/assets/af7ab671-ba89-472b-97d6-031433e08e83)
+![홈](https://github.com/user-attachments/assets/8444a742-3cdf-4467-86ab-1bd26e810eaf)
+
 
 주요 기능
 MBTI 검사 진행
